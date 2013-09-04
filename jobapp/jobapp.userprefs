@@ -1,0 +1,29 @@
+﻿<Properties GitUserInfo="UsingMD">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="jobapp/MainWindow.cs">
+    <Files>
+      <File FileName="jobapp/MainWindow.cs" Line="882" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="jobapp" expanded="True">
+            <Node name="References" expanded="True">
+              <Node name="MySql.Data, Version=6.6.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" selected="True" />
+            </Node>
+            <Node name="UserInterface" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\swoodhouse\Desktop\git\c_sharp_stuff\jobapp\jobapp\MainWindow.cs" line="3470" />
+      <Breakpoint file="C:\Users\swoodhouse\Desktop\git\c_sharp_stuff\jobapp\jobapp\MainWindow.cs" line="998" />
+      <Breakpoint file="C:\Users\swoodhouse\Desktop\git\c_sharp_stuff\jobapp\jobapp\MainWindow.cs" line="2200" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

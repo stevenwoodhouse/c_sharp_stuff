@@ -1,0 +1,1 @@
+This is my efforts into using monodevlop for crossplatform c# coding

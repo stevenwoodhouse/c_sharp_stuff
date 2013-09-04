@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="bobx/MainWindow.cs">
+    <Files>
+      <File FileName="bobx/MainWindow.cs" Line="32" Column="37" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="bobx" expanded="True">
+            <Node name="MainWindow.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/swoodhouse/programming/c_sharp_stuff/bobx/bobx/MainWindow.cs" line="131" />
+      <Breakpoint file="/home/swoodhouse/programming/c_sharp_stuff/bobx/bobx/MainWindow.cs" line="125" />
+      <Breakpoint file="/home/swoodhouse/programming/c_sharp_stuff/bobx/bobx/MainWindow.cs" line="115" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

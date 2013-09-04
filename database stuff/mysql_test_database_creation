@@ -1,0 +1,235 @@
+create database test_data;
+
+use test_data;
+
+-- create tables
+
+delimiter $$
+
+CREATE TABLE `jobs` (
+  `job_id` int(11) NOT NULL AUTO_INCREMENT,
+  `imei` varchar(30) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `line_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`job_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7000000 DEFAULT CHARSET=latin1$$
+
+
+
+delimiter $$
+
+CREATE TABLE `lines` (
+  `line_id` int(11) NOT NULL AUTO_INCREMENT,
+  `line_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`line_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1$$
+
+delimiter $$
+
+CREATE TABLE `manufacturer` (
+  `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `manufacturer_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(45) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(45) NOT NULL,
+  PRIMARY KEY (`manufacturer_id`),
+  UNIQUE KEY `manufacturer_name_UNIQUE` (`manufacturer_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
+
+
+delimiter $$
+
+CREATE TABLE `models` (
+  `model_id` int(11) NOT NULL AUTO_INCREMENT,
+  `model_name` varchar(255) NOT NULL,
+  `manufacturer_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`model_id`),
+  UNIQUE KEY `model_name_UNIQUE` (`model_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
+
+
+delimiter $$
+
+CREATE TABLE `statuses` (
+  `status_id` int(11) NOT NULL AUTO_INCREMENT,
+  `status_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`status_id`),
+  UNIQUE KEY `status_name_UNIQUE` (`status_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1$$
+
+
+
+delimiter $$
+
+CREATE TABLE `transaction_types` (
+  `transaction_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `transaction_type_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`transaction_type_id`),
+  UNIQUE KEY `transaction_type_name_UNIQUE` (`transaction_type_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1$$
+
+
+
+delimiter $$
+
+CREATE TABLE `transactions` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `job_id` int(11) DEFAULT NULL,
+  `transaction_type_id` int(11) NOT NULL,
+  `notes` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`transaction_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1$$
+
+
+
+delimiter $$
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
+
+
+
+-- propegate tables
+
+insert users
+(user_name, created_at, created_by, updated_at, updated_by)
+select 'Administrator', now(), 'Administrator', now(), 'Administrator' union
+select 'Steven Woodhouse', now(), 'Administrator', now(), 'Administrator';
+
+
+
+
+
+
+
+insert `lines`
+(line_name, created_at, created_by, updated_at, updated_by)
+select 'EE HTC Warranty', now(), 'Steven Woodhouse', now(), 'Steven Woodhouse';
+
+
+insert statuses
+(status_name, created_at, created_by, updated_at, updated_by)
+select 'awaiting delivery', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting screen', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting repair', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting debug', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting refurbishment', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting quality checks', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting out of box checks', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting pack out', now(), 'Administrator', now(), 'Administrator' 	union
+select 'awaiting dispatch', now(), 'Administrator', now(), 'Administrator' 	union
+select 'dispatched', now(), 'Administrator', now(), 'Administrator' 	union
+select 'completed', now(), 'Administrator', now(), 'Administrator' 	union
+select 'claimed', now(), 'Administrator', now(), 'Administrator';	
+
+
+insert models
+(model_name, manufacturer_id, created_at, created_by, updated_at, updated_by)
+select 'Desire HD', 1, now(), 'Administrator', now(), 'Administrator' union
+select 'Desire One', 1, now(), 'Administrator', now(), 'Administrator';
+
+
+
+
+insert manufacturer
+(manufacturer_name, created_at, created_by, updated_at, updated_by)
+select 'HTC', now(), 'Administrator', now(), 'Administrator';
+
+
+
+insert transaction_types
+(transaction_type_name, created_at, created_by, updated_at, updated_by)
+select 'prealerted', now(), 'Administrator', now(), 'Administrator' 	union
+select 'booked in', now(), 'Administrator', now(), 'Administrator' 	union
+select 'bounce check', now(), 'Administrator', now(), 'Administrator' 	union
+select 'screened', now(), 'Administrator', now(), 'Administrator' 	union
+select 'customer damage found', now(), 'Administrator', now(), 'Administrator' 	union
+select 'part added', now(), 'Administrator', now(), 'Administrator' 	union
+select 'part replaced', now(), 'Administrator', now(), 'Administrator' 	union
+select 'part resoldered', now(), 'Administrator', now(), 'Administrator' 	union
+select 'repaired', now(), 'Administrator', now(), 'Administrator' 	union
+select 'debugged', now(), 'Administrator', now(), 'Administrator' 	union
+select 'qa passed', now(), 'Administrator', now(), 'Administrator' 	union
+select 'qa failed', now(), 'Administrator', now(), 'Administrator' 	union
+select 'send to repair', now(), 'Administrator', now(), 'Administrator' 	union
+select 'send to debug', now(), 'Administrator', now(), 'Administrator' 	union
+select 'out of box passed', now(), 'Administrator', now(), 'Administrator' 	union
+select 'packed', now(), 'Administrator', now(), 'Administrator' 	union
+select 'dispatched', now(), 'Administrator', now(), 'Administrator' 	union
+select 'claimed', now(), 'Administrator', now(), 'Administrator' 	
+
+
+
+
+-- initial job creation script
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_job_prealert`(in imei_in varchar(30), model_name_in varchar(255), user_name varchar(255))
+BEGIN
+-- get some variables
+set @date_time_stamp = (select convert(now(), char));
+set @model_id = (select m.model_id from models m where m.model_name = model_name_in);
+
+-- create the job
+insert jobs (imei, model_id, line_id, status_id, 
+created_at, created_by, updated_at, updated_by)
+select imei_in, @model_id, 1, 1,  @date_time_stamp,
+user_name, @date_time_stamp, user_name;
+
+-- get the jobid
+set @jobid = (select max(job_id) from jobs j where j.imei = imei_in);
+
+-- create the first transaction - prealert
+insert transactions
+(job_id, transaction_type_id, notes, created_at, created_by)
+select @jobid, 1, '', @date_time_stamp, user_name;
+
+
+END
+
+
+
+
+-- create a couple of jobs
+
+
+call create_job_prealert ('345456567678789', 'Desire HD', 'Steven Woodhouse');
+call create_job_prealert ('345233434565665', 'Desire One', 'Steven Woodhouse');
+
+
+
+
+
